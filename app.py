@@ -1508,7 +1508,7 @@ def delete_user(user_id):
     flash("User deleted successfully.", "success")
 
     return redirect(url_for("users"))
-
+    
 @app.route("/predict", methods=["POST"])
 @login_required
 def predict():
