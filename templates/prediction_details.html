@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">
+Prediction Details
+</h2>
+
+<div class="row">
+
+    <!-- DRIVER DETAILS -->
+
+    <div class="col-md-6">
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header bg-primary text-white">
+                Driver Information
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered">
+
+                    <tr><th>Full Name</th><td>{{ prediction[0] }}</td></tr>
+                    <tr><th>Gender</th><td>{{ prediction[1] }}</td></tr>
+                    <tr><th>Age</th><td>{{ prediction[2] }}</td></tr>
+                    <tr><th>Driving Experience</th><td>{{ prediction[3] }} Years</td></tr>
+                    <tr><th>County</th><td>{{ prediction[4] }}</td></tr>
+                    <tr><th>Previous Claims</th><td>{{ prediction[5] }}</td></tr>
+                    <tr><th>Claim Amount History</th><td>KES {{ prediction[6] }}</td></tr>
+                    <tr><th>No Claim Bonus</th><td>{{ prediction[7] }}</td></tr>
+                    <tr><th>Driver Risk Score</th><td>{{ prediction[8] }}</td></tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- VEHICLE DETAILS -->
+
+    <div class="col-md-6">
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header bg-success text-white">
+                Vehicle Information
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered">
+
+                    <tr><th>Make</th><td>{{ prediction[9] }}</td></tr>
+                    <tr><th>Model</th><td>{{ prediction[10] }}</td></tr>
+                    <tr><th>Vehicle Type</th><td>{{ prediction[11] }}</td></tr>
+                    <tr><th>Vehicle Age</th><td>{{ prediction[12] }} Years</td></tr>
+                    <tr><th>Engine Capacity</th><td>{{ prediction[13] }} cc</td></tr>
+                    <tr><th>Vehicle Value</th><td>KES {{ prediction[14] }}</td></tr>
+                    <tr><th>Annual Mileage</th><td>{{ prediction[15] }}</td></tr>
+                    <tr><th>Accident Risk Index</th><td>{{ prediction[16] }}</td></tr>
+                    <tr><th>Theft Risk Index</th><td>{{ prediction[17] }}</td></tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- PREDICTION RESULT -->
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+        Prediction Result
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered">
+
+            <tr>
+                <th>Predicted Premium</th>
+                <td><strong>KES {{ prediction[18] }}</strong></td>
+            </tr>
+
+            <tr>
+
+                <th>Risk Category</th>
+
+                <td>
+
+                    {% if prediction[19] == "Low Risk" %}
+                        <span class="badge bg-success">{{ prediction[19] }}</span>
+
+                    {% elif prediction[19] == "Medium Risk" %}
+                        <span class="badge bg-warning text-dark">{{ prediction[19] }}</span>
+
+                    {% else %}
+                        <span class="badge bg-danger">{{ prediction[19] }}</span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>Date Generated</th>
+                <td>{{ prediction[20] }}</td>
+            </tr>
+
+        </table>
+
+        <div class="mt-4">
+
+            <a href="/history" class="btn btn-secondary">
+                ← Back to History
+            </a>
+
+            <button onclick="window.print()" class="btn btn-primary">
+                🖨 Print
+            </button>
+
+            <a href="/prediction/{{ prediction_id }}/pdf"
+            class="btn btn-success">
+                📄 Download PDF
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

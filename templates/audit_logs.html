@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">
+    System Audit Logs
+</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<div class="row mb-3">
+
+<div class="col-md-6">
+
+<form method="GET" action="{{ url_for('audit_logs') }}">
+
+<div class="input-group">
+
+<input
+type="text"
+name="search"
+class="form-control"
+placeholder="Search username or action..."
+value="{{ search }}">
+
+<button class="btn btn-primary">
+Search
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="col-md-6 text-end">
+
+<a href="{{ url_for('audit_logs_pdf') }}"
+class="btn btn-danger">
+
+Download PDF
+
+</a>
+
+<a href="{{ url_for('audit_logs_excel') }}"
+class="btn btn-success">
+
+Download Excel
+
+</a>
+
+</div>
+
+</div>
+
+<h5 class="mb-3">
+    Total Logs:
+    <span class="badge bg-dark">
+        {{ logs|length }}
+    </span>
+</h5>
+
+<table class="table table-bordered table-hover table-striped">
+
+<thead class="table-primary">
+
+<tr>
+
+<th>Log ID</th>
+<th>Username</th>
+<th>Action</th>
+<th>Date & Time</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for log in logs %}
+
+<tr>
+
+<td>{{ log[0] }}</td>
+<td>{{ log[1] }}</td>
+<td>
+
+{% if "Logged into" in log[2] %}
+
+<span class="badge bg-success">
+    {{ log[2] }}
+</span>
+
+{% elif "Created" in log[2] %}
+
+<span class="badge bg-primary">
+    {{ log[2] }}
+</span>
+
+{% elif "Updated" in log[2] %}
+
+<span class="badge bg-warning text-dark">
+    {{ log[2] }}
+</span>
+
+{% elif "Deleted" in log[2] %}
+
+<span class="badge bg-danger">
+    {{ log[2] }}
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+    {{ log[2] }}
+</span>
+
+{% endif %}
+
+</td>
+<td>{{ log[3].strftime("%d %b %Y %H:%M") }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

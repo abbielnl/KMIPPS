@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card p-4 shadow">
+
+    <h2 class="text-center text-primary mb-4">
+        Kenya Motor Insurance Premium Prediction System
+    </h2>
+
+    <form action="/predict" method="POST">
+
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control mb-3" name="full_name" required>
+
+        <label class="form-label">Driver Age</label>
+        <input type="number" class="form-control mb-3" name="driver_age" required>
+
+        <label class="form-label">Gender</label>
+        <select class="form-select mb-3" name="gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <label class="form-label">Driving Experience</label>
+        <input type="number" class="form-control mb-3" name="driving_experience" required>
+
+        <label class="form-label">Vehicle Make</label>
+        <input type="text" class="form-control mb-3" name="vehicle_make" required>
+
+        <label class="form-label">Vehicle Model</label>
+        <input type="text" class="form-control mb-3" name="vehicle_model" required>
+
+        <label class="form-label">Vehicle Type</label>
+        <input type="text" class="form-control mb-3" name="vehicle_type" required>
+
+        <label class="form-label">Vehicle Age</label>
+        <input type="number" class="form-control mb-3" name="vehicle_age" required>
+
+        <label class="form-label">Engine Capacity</label>
+        <input type="number" class="form-control mb-3" name="engine_capacity" required>
+
+        <label class="form-label">Vehicle Value</label>
+        <input type="number" class="form-control mb-3" name="vehicle_value" required>
+
+        <label class="form-label">County</label>
+        <input type="text" class="form-control mb-3" name="county" required>
+
+        <label class="form-label">Annual Mileage</label>
+        <input type="number" class="form-control mb-3" name="annual_mileage" required>
+
+        <label class="form-label">Previous Claims</label>
+        <input type="number" class="form-control mb-3" name="previous_claims" required>
+
+        <label class="form-label">Claim Amount History</label>
+        <input type="number" class="form-control mb-3" name="claim_amount_history" required>
+
+        <label class="form-label">No Claim Bonus</label>
+        <input type="number" class="form-control mb-3" name="no_claim_bonus" required>
+
+        <label class="form-label">Policy Type</label>
+        <input type="text" class="form-control mb-3" name="policy_type" required>
+
+        <label class="form-label">Accident Risk Index</label>
+        <input type="number" step="0.01" class="form-control mb-3" name="accident_risk_index" required>
+
+        <label class="form-label">Theft Risk Index</label>
+        <input type="number" step="0.01" class="form-control mb-3" name="theft_risk_index" required>
+
+        <label class="form-label">Driver Risk Score</label>
+        <input type="number" step="0.01" class="form-control mb-4" name="driver_risk_score" required>
+
+        <button type="submit" class="btn btn-primary w-100">
+            Predict Premium
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

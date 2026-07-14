@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h2 class="text-center text-primary mb-5">
+        KMIPPS Reports
+    </h2>
+
+    <div class="row">
+
+        <!-- Prediction PDF -->
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body text-center">
+
+                    <h4>Prediction Report (PDF)</h4>
+
+                    <p class="text-muted">
+                        Download all prediction records as a PDF report.
+                    </p>
+
+                    <a href="{{ url_for('download_predictions_pdf') }}"
+                       class="btn btn-danger btn-lg">
+
+                        <i class="bi bi-file-earmark-pdf-fill"></i>
+
+                        Download PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Prediction Excel -->
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body text-center">
+
+                    <h4>Predictions (Excel)</h4>
+
+                    <p class="text-muted">
+
+                        Export every prediction to Excel.
+
+                    </p>
+
+                    <a href="{{ url_for('download_predictions_excel') }}"
+                       class="btn btn-success btn-lg">
+
+                        <i class="bi bi-file-earmark-excel-fill"></i>
+
+                        Download Excel
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Drivers -->
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body text-center">
+
+                    <h4>Drivers Report</h4>
+
+                    <p class="text-muted">
+
+                        Export all drivers.
+
+                    </p>
+
+                    <a href="{{ url_for('download_drivers_excel') }}"
+                       class="btn btn-primary btn-lg">
+
+                        Download Drivers
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Vehicles -->
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body text-center">
+
+                    <h4>Vehicles Report</h4>
+
+                    <p class="text-muted">
+
+                        Export all vehicles.
+
+                    </p>
+
+                    <a href="{{ url_for('download_vehicles_excel') }}"
+                       class="btn btn-warning btn-lg">
+
+                        Download Vehicles
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Audit Logs -->
+
+        <div class="col-md-12 mb-4">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body text-center">
+
+                    <h4>Audit Logs</h4>
+
+                    <p class="text-muted">
+
+                        Download every system activity.
+
+                    </p>
+
+                    <a href="{{ url_for('download_audit_logs_excel') }}"
+                       class="btn btn-dark btn-lg">
+
+                        Download Audit Logs
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

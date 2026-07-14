@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">
+
+Machine Learning Model Performance
+
+</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-primary">
+
+<tr>
+
+<th>Model</th>
+<th>MAE</th>
+<th>RMSE</th>
+<th>R² Score</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for model in models %}
+
+<tr>
+
+<td>{{ model.name }}</td>
+<td>{{ model.mae }}</td>
+<td>{{ model.rmse }}</td>
+<td>{{ model.r2 }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+  <hr>
+
+        <div class="card shadow p-4">
+
+            <canvas id="modelChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    console.log("Script Loaded");
+
+    const ctx = document.getElementById("modelChart");
+
+    console.log(ctx);
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: [
+                "Linear Regression",
+                "Random Forest",
+                "Gradient Boosting"
+            ],
+            datasets: [{
+                label: "R² Score",
+                data: [0.999695, 0.998214, 0.999287],
+                backgroundColor: [
+                    "#0d6efd",
+                    "#198754",
+                    "#ffc107"
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    min: 0.995,
+                    max: 1
+                }
+            }
+        }
+    });
+
+});
+</script>
+
+{% endblock %}

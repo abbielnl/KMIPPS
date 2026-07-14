@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card p-5 shadow text-center">
+
+    <h2 class="text-success mb-4">
+        Insurance Premium Prediction
+    </h2>
+
+    <h1 class="display-4 fw-bold">
+        KES {{ premium }}
+    </h1>
+
+    <hr>
+
+    <h3 class="mt-4">
+        Risk Category
+    </h3>
+
+    {% if risk_category == "Low Risk" %}
+        <span class="badge bg-success fs-5 p-3">
+            {{ risk_category }}
+        </span>
+
+    {% elif risk_category == "Medium Risk" %}
+        <span class="badge bg-warning text-dark fs-5 p-3">
+            {{ risk_category }}
+        </span>
+
+    {% else %}
+        <span class="badge bg-danger fs-5 p-3">
+            {{ risk_category }}
+        </span>
+    {% endif %}
+
+    <div class="mt-5">
+
+        <a href="/" class="btn btn-primary me-3">
+            Make Another Prediction
+        </a>
+
+        <a href="/history" class="btn btn-secondary">
+            View Prediction History
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

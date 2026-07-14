@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-primary mb-4">
+    Edit User
+</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+
+        <input
+            type="text"
+            name="username"
+            class="form-control"
+            value="{{ user[1] }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Role</label>
+
+        <select name="role" class="form-select">
+
+            <option {% if user[3]=="Administrator" %}selected{% endif %}>
+                Administrator
+            </option>
+
+            <option {% if user[3]=="Underwriter" %}selected{% endif %}>
+                Underwriter
+            </option>
+
+            <option {% if user[3]=="Insurance Officer" %}selected{% endif %}>
+                Insurance Officer
+            </option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary">
+        Save Changes
+    </button>
+
+    <a href="/users" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}
